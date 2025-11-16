@@ -13,5 +13,19 @@ public class GradeHistory {
         this.changedAt = changedAt;
     }
 
+    public double getOldGrade() {
+        return oldGrade;
+    }
 
+    public double getNewGrade() {
+        return newGrade;
+    }
+
+    public String getEditReason() {
+        return editReason;
+    }
+
+    public LocalDateTime getChangedAt() {
+        return changedAt;
+    }
 }

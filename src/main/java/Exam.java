@@ -14,4 +14,24 @@ public class Exam {
         this.dateOfExam = dateOfExam;
         this.examCoefficient = examCoefficient;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public LocalDateTime getDateOfExam() {
+        return dateOfExam;
+    }
+
+    public int getExamCoefficient() {
+        return examCoefficient;
+    }
 }

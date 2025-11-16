@@ -18,12 +18,15 @@ public class Grade {
     public Student getStudent() {
         return student;
     }
+
     public Exam getExam() {
         return exam;
     }
+
     public double getGrade() {
         return grade;
     }
+
     public List<GradeHistory> getGradeHistory() {
         return gradeHistory;
     }
