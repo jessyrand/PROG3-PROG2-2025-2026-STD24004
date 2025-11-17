@@ -1,12 +1,12 @@
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 public class GradeHistory {
     private double oldGrade;
     private double newGrade;
     private String editReason;
-    private LocalDateTime changedAt;
+    private Instant changedAt;
 
-    public GradeHistory(double oldGrade, double newGrade, String editReason, LocalDateTime changedAt) {
+    public GradeHistory(double oldGrade, double newGrade, String editReason, Instant changedAt) {
         this.oldGrade = oldGrade;
         this.newGrade = newGrade;
         this.editReason = editReason;
@@ -25,7 +25,7 @@ public class GradeHistory {
         return editReason;
     }
 
-    public LocalDateTime getChangedAt() {
+    public Instant getChangedAt() {
         return changedAt;
     }
 }

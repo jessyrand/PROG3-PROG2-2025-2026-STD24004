@@ -1,7 +1,6 @@
 import java.time.Instant;
 import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Institution {
@@ -50,31 +49,31 @@ public class Institution {
     }
 
     public double getExamGrade(Exam exam, Student student, Instant t) {
-        Grade targetGrade = null;
-
         for (Grade g : grades) {
             if (g.getExam().equals(exam) && g.getStudent().equals(student)) {
-                targetGrade = g;
-                break;
+                return g.getGradeAt(t);
+            }
+        }
+        return 0.0;
+    }
+    public double getCourseGrade(Course course, Student student, Instant t) {
+        double weightedSum = 0.0;
+        double totalCoefficient = 0.0;
+
+        for (Exam exam : exams) {
+            if (exam.getCourse().equals(course)) {
+                double examGrade = getExamGrade(exam, student, t);
+                double coef = exam.getExamCoefficient();
+                weightedSum += examGrade * coef;
+                totalCoefficient += coef;
             }
         }
 
-        if (targetGrade == null) {
+        if (totalCoefficient == 0.0) {
             return 0.0;
         }
 
-        double result = targetGrade.getGrade();
-
-        for (GradeHistory h : targetGrade.getGradeHistory()) {
-            Instant changeInstant = h.getChangedAt()
-                    .atZone(ZoneId.systemDefault())
-                    .toInstant();
-
-            if (!changeInstant.isAfter(t)) {
-                result = h.getNewGrade();
-            }
-        }
-
-        return result;
+        return weightedSum / totalCoefficient;
     }
+
 }
